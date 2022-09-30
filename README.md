@@ -90,5 +90,22 @@ If you haven’t used tinyurl.com before, please try creating a new shortened UR
   } 
 }
 
+
 ```
 
+  const base = 'http://localhost:3000'
+    if (!validUrl.isUri(data)){
+        return res.status(400).send("invalidUrl")
+    }
+    // sorturl = await url.create(data)
+    const urlCode = shortid.generate();
+
+    url = new Url({
+        origUrl,
+        shortUrl,
+        urlCode,
+        date: new Date(),
+      });
+
+    console.log(urlCode)
+    res.status(200).send("ok")
